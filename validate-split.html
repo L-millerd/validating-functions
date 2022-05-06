@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //CREATING OUR OWN EMAIL VALIDATION
+        
+        //1. after at least one character, the first occurance of @ symbol
+        //2. After '@' there should be a series of characters or at least 
+        //one character until the first occurence of '.'
+        //3. There should be at least one or a series of characters after '.'
+        //4. no uppercase letters
+        //5. There can not be more than one '@'
+        
+        //bob@domain.com, 
+        //bob is called "emailid"
+        //domain is "domain"
+        //.com is called an "extension"
+
+        function isCorrectFormat(email){
+            let full_email_split = email.split("@");//will split into array elements at the space 
+        
+            let emailid = full_email_split[0]; //names first half of array once split
+            //console.log(emailid[0]);
+            let domain_extension = full_email_split[1]; //names second half of array once split 
+
+            if((full_email_split.length == 2) && emailid.length >=1 && isCharacterALetter(emailid.charAt(0)) && domain_extension.length >= 1){//checks there are 2 parts to array and length of each part 
+               
+                let domain_extension_split = domain_extension.split("."); //create another array with split
+                let domain = domain_extension_split[0]; //names first half of array (before .)
+                let extension = domain_extension_split[1];//names seccond half of array (after .)
+                //console.log(domain, extension);
+
+                if(domain && domain.length >= 1 && isCharacterALetter(domain.charAt(0)) &&extension && extension.length >= 1){//tests length of new array
+                  //putting just domain and extension are just checking that they exist, others testing length  
+                    return true
+                }
+                else
+                    return false
+            }
+
+            else
+                return false;
+            }
+
+
+            // for(let i=0; i<a.length; i++){
+            //     console.log(`
+            //         a[${i}] = ${a[i]}
+            //     `);
+
+            //     console.log(a.length)
+            // }
+        
+           // console.log("a[0]=", a[0], "a[1] = ", a[1]);
+            //return true/false 
+        
+        
+        isCorrectFormat("john@vanarts.com");
+        
+        //Name Validator Donald John Trump - "Donald J. Trump" make function that verifies that it follows that format 
+        //First letters are uppercase, there are 3 words (at least one letter), middle initial has a dot
+
+        function isCharacterALetter(char) {
+            return (/[a-zA-Z]/).test(char)
+        }
+        
+        </script>
+</head>
+<body>
+    
+</body>
+</html>
